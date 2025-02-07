@@ -15,15 +15,16 @@ This repository is tested on Windows 11 and requires:
 ### 1. Install the necessary libraries:
 - torch, torchvision, numpy, matplotlib, scikit-learn, PIL, tkinter, tensorboard
 ### 2. Data Preparation
-The dataset is divided into three categories:
 
+The dataset is divided into three categories:  
 - Clean dataset: Standard images of cats and dogs.
 - Noisy dataset: Clean images with added Gaussian noise.
 - Combined dataset: A mix of clean and noisy images.
-
+  
 Images are resized to **224x224** pixels for compatibility with ResNet-50.
 
 ### 3. Adding Noise to Images
+
 To generate the noisy dataset, use the **add_noise.py** script! This script applies Gaussian noise to clean images and saves them in a separate folder.
 
 ### 4. Training the Model
@@ -62,3 +63,22 @@ This app allows the user to:
 - Apply noise to test images before classification.
 
 ### 7. Results and Analysis
+
+After training, the model is evaluated using:
+- Accuracy
+- Precision
+- Recall
+- F1-score
+These metrics are computed and logged using TensorBoard.
+
+| Dataset  | Train Loss | Validation Loss | Accuracy (%) | Precision (%) | Recall (%) | F1-score (%) |
+|----------|------------|----------------|--------------|--------------|------------|--------------|
+| **Clean**    | 0.00836    | 0.02126        | 99.28        | 99.26        | 99.28      | 99.28        |
+| **Noisy**    | 0.02345    | 0.03247        | 98.77        | 98.77        | 98.77      | 98.77        |
+| **Combined** | 0.00909    | 0.02013        | 99.29        | 99.29        | 99.29      | 99.28        |  
+
+The **combined dataset** showed the best overall performance, demonstrating ResNet-50’s robustness to noise.
+
+### **8. References**
+Dataset: [Kaggle Cats vs Dogs](https://www.kaggle.com/datasets/shaunthesheep/microsoft-catsvsdogs-dataset)  
+ResNet-50 Model: [PyTorch ResNet50](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet50.html)
